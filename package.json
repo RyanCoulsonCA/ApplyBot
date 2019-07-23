@@ -1,0 +1,26 @@
+{
+  "name": "applybot",
+  "version": "1.0.0",
+  "description": "A Discord bot dedicated to running surveys or applications on your server.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanCoulsonCA/ApplyBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanCoulsonCA/ApplyBot/issues"
+  },
+  "homepage": "https://github.com/RyanCoulsonCA/ApplyBot#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "discord.js": "^11.5.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "sqlite3": "^4.0.9"
+  }
+}
