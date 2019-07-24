@@ -1,9 +1,13 @@
-const config = require('../config.json');
 const sqlite3 = require('sqlite3').verbose();
 const express = require('express');
-const Discord = require('discord.js');
 const bodyParser = require('body-parser');
 const app = express();
+
+const Discord = require('discord.js');
+const commands = require('./commandHandler.js');
+const parser = require('./messageParser.js');
+const config = require('../config.json');
+
 
 /* Initialize Discord Client */
 const client = new Discord.Client();
@@ -24,6 +28,13 @@ app.listen(config.WEB_PORT, () => {
 /* Discord Bot Listeners */
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);
+});
+
+client.on('message', (msg) => {
+	const message = parser.parse(msg);
+	if(message.command in commands.commands && !message.author.bot) {
+		commands.commands[message.command](msg, message.args);
+	}
 });
 
 
