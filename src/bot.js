@@ -30,12 +30,17 @@ client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);
 });
 
-client.on('message', (msg) => {
+client.on('message', msg => {
 	const message = parser.parse(msg);
+
 	if(message.command in commands.commands && !message.author.bot) {
 		commands.commands[message.command](msg, message.args);
 	}
 });
 
+client.on('guildMemberAdd', member => {
+	const user = member.user;
+	user.send("Welcome!");
+});
 
 client.login(config.token);
